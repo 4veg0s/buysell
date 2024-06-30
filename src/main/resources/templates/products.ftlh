@@ -10,10 +10,14 @@
 <form action="/logout" method="post">
     <input type="hidden" name="_csrf" value="${_csrf.token}">
     <input type="submit" value="Выйти"/>
-</form><hr>
-    <#else>
-    <a href="/login">Войти</a><hr>
+</form>
+<#if user.isAdmin()>
+    <hr><a href="/admin">Панель администратора</a>
 </#if>
+<#else>
+<a href="/login">Войти</a>
+</#if>
+<hr>
     <h4>Товары со всей России</h4>
     <form action="/" method="get">
         Поиск по названию объявления: <input type="text" name="title"><br>
